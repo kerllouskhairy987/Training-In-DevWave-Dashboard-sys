@@ -22,15 +22,16 @@ const Navbar: React.FC = () => {
             className="text-[#8c8c8c]"
             onClick={() => setShow((prev) => !prev)}
           />
-          <input
-            type="text"
-            placeholder="Search for anything"
-            className={`md:w-full md:h-full outline-none border-none bg-white absolute transition md:static z-10 top-[65px] w-[90dvw] rounded-3xl duration-500 left-[-50px] px-5 py-3 placeholder:text-[#8c8c8c] ${
-              show
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-2 pointer-events-none md:opacity-100 md:translate-y-0"
-            } md:block`}
-          />
+ <input
+  type="text"
+  placeholder="Search for anything"
+  className={`md:w-full md:h-full text-[var(--topbartext)] md:opacity-100 md:translate-y-0 outline-none border-none bg-white md:static absolute transition z-10 md:top-0 top-[65px] md:left-0 left-[-50px] w-[90dvw] rounded-3xl duration-500 px-5 py-3 placeholder:text-[#8c8c8c]
+    ${ show 
+        ? "opacity-100 translate-y-0" 
+        : "opacity-0 -translate-y-2 pointer-events-none md:opacity-100 md:translate-y-0 md:pointer-events-auto" 
+    } md:block`}
+/>
+
         </div>
         <div className="nav-right flex md:w-1/2 md:gap-6 gap-3 justify-between items-center">
           <div className="icons flex md:gap-6 gap-3">

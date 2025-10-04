@@ -98,9 +98,16 @@ const AppSidebar: React.FC = () => {
 
       {/* Sidebar */}
       <div
-        className={`bg-[var(--secondarycolor)] md:w-full w-[clamp(300px,70dvw,90dvw)] flex flex-col gap-4 md:gap-2 h-full px-6 py-8 ${
-          open ? "translate-x-0" : "-translate-x-full"
-        } md:translate-x-0 fixed md:static top-0 left-0 z-40 transition-transform duration-300`}
+        className={`bg-[var(--secondarycolor)] 
+              md:w-full w-[80vw]
+              md:max-w-1/4 
+              flex flex-col gap-4 md:gap-2 
+              h-screen md:h-screen 
+              px-6 py-8 
+              fixed  top-0 left-0 z-40 
+              transition-transform duration-300
+              ${open ? "translate-x-0" : "-translate-x-full"} 
+              md:translate-x-0`}
       >
         {/* Logo */}
         <div className="logo md:h-20 flex text-white justify-end">
