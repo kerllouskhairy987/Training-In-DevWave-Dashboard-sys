@@ -79,6 +79,8 @@
   --secondarycolor:#447A9C;
   --sideHover:#B8D1E0;
   --topbartext:#0B0909;
+  --bg:#B8D1E0;
+  --fontgray:#8C8C8C;
 }
 
 .dark {
@@ -126,4 +128,34 @@
   body {
     @apply bg-background text-foreground;
   }
+  .page {
+    @apply  h-screen w-full bg-[var(--bg)] md:px-9 px-4 md:py-8 py-4;
+  }
+  /* Target the scrollbar */
+::-webkit-scrollbar {
+  height: 5px;   /* height for horizontal scrollbar */
+  width: 4px;    /* width for vertical scrollbar */
+}
+
+/* Track (the background of scrollbar) */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+  border-radius: 10px;
+}
+
+/* Thumb (the draggable part) */
+::-webkit-scrollbar-thumb {
+  background: var(--secondarycolor);  
+  border-radius: 10px;
+}
+
+/* Thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background:#82b9db ; 
+}
+
+}
+@layer components{
+
+
 }
