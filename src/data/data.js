@@ -134,4 +134,71 @@ export const categories = [
     numberOfItems: 20,
   },
 ];
+export const menuData = [
+  {
+    id: 1,
+    product: "Cheeseburger",
+    category: "Burgers",
+    price: 8.99,
+    quantity: 25,
+    availability: "Available",
+  },
+  {
+    id: 2,
+    product: "Veggie Burger",
+    category: "Burgers",
+    price: 7.49,
+    quantity: 10,
+    availability: "Low Stock",
+  },
+  {
+    id: 3,
+    product: "Pepperoni Pizza",
+    category: "Pizza",
+    price: 12.99,
+    quantity: 0,
+    availability: "Out of Stock",
+  },
+  {
+    id: 4,
+    product: "Margherita Pizza",
+    category: "Pizza",
+    price: 11.99,
+    quantity: 15,
+    availability: "Available",
+  },
+  {
+    id: 5,
+    product: "Chicken Nuggets",
+    category: "Snacks",
+    price: 6.49,
+    quantity: 30,
+    availability: "Available",
+  },
+  {
+    id: 6,
+    product: "French Fries",
+    category: "Snacks",
+    price: 3.99,
+    quantity: 5,
+    availability: "Low Stock",
+  },
+  {
+    id: 7,
+    product: "Coca Cola",
+    category: "Drinks",
+    price: 1.99,
+    quantity: 40,
+    availability: "Available",
+  },
+  {
+    id: 8,
+    product: "Orange Juice",
+    category: "Drinks",
+    price: 2.49,
+    quantity: 0,
+    availability: "Out of Stock",
+  },
+];
+
 

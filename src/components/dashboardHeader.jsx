@@ -44,34 +44,37 @@ const DashboardHeader = ({ title, onFilterChange, noFilter }) => {
           />
         </div>
 
-        {/* Date Range */}
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="relative ">
-            <CalendarDays
-              className="absolute left-3 top-1/2  -translate-y-1/2 text-gray-400"
-              size={16}
-            />
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => handleFilterChange("startDate", e.target.value)}
-              className="border rounded-lg pl-10 pr-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        {noFilter ? null : (
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="relative ">
+              <CalendarDays
+                className="absolute left-3 top-1/2  -translate-y-1/2 text-gray-400"
+                size={16}
+              />
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) =>
+                  handleFilterChange("startDate", e.target.value)
+                }
+                className="border rounded-lg pl-10 pr-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
 
-          <div className="relative">
-            <CalendarDays
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
-              size={16}
-            />
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => handleFilterChange("endDate", e.target.value)}
-              className="border rounded-lg pl-10 pr-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
+            <div className="relative">
+              <CalendarDays
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                size={16}
+              />
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => handleFilterChange("endDate", e.target.value)}
+                className="border rounded-lg pl-10 pr-3 py-2 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Filter */}
         <div className="relative">
