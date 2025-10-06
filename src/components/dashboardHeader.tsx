@@ -2,7 +2,7 @@
 import { Search, CalendarDays, Filter } from "lucide-react";
 import { useState } from "react";
 
-const DashboardHeader = ({ title, onFilterChange, noFilter }) => {
+const DashboardHeader = ({ title, onFilterChange, noFilter }: any) => {
   const today = new Date().toISOString().split("T")[0];
   const [searchTerm, setSearchTerm] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -10,7 +10,7 @@ const DashboardHeader = ({ title, onFilterChange, noFilter }) => {
   const [filterOption, setFilterOption] = useState("all");
 
   // Trigger parent on every change
-  const handleFilterChange = (type, value) => {
+  const handleFilterChange = (type: any, value: any) => {
     if (type === "search") setSearchTerm(value);
     if (type === "startDate") setStartDate(value);
     if (type === "endDate") setEndDate(value);
