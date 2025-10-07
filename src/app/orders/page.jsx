@@ -90,7 +90,7 @@ const OrdersPage = () => {
                     </td>
                     <td className="py-3  text-sm">
                       <p
-                        className={`px-2 py-1  justify-center rounded-2xl  items-center gap-1 text-sm font-medium 
+                        className={`px-2 py-1 flex justify-center rounded-2xl  items-center gap-1 text-sm font-medium 
                         ${
                           order.status === "pending"
                             ? "text-[#FACC15] bg-[#FEF9C3]"

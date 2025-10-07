@@ -73,7 +73,7 @@ export const addCategory = async (token: string, prevState: unknown, formData: F
         console.log('error--------<', error)
         return {
             status: 500,
-            // message: "",
+            message: "Internal Server Error",
             values: null,
         }
     }

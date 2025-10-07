@@ -1,101 +1,20 @@
-// "use client"
-import { menuData } from "../../data/data";
-import { useState } from "react";
-import { PenLine, Trash2, Dot } from "lucide-react";
+
+import { PenLine, Trash2 } from "lucide-react";
 import DashboardHeader from "@/components/dashboardHeader";
 import img from "@/../public/image.png";
 import Image from "next/image";
-import { getAllCategories, getAllProducts } from "./_actions/products";
-import { ProductsResponse } from "./types";
+import { getAllCategories, getAllProducts, getSingleProduct } from "./_actions/products";
+import { ProductsResponse, SingleProductResponse } from "./types";
 import { Button } from "@/components/ui/button";
 import DialogModalAddProduct from "./_components/DialogModalAddProduct";
 import { TCategoryResponse } from "../categories/_types";
-import { DeleteProduct } from "./_components/DeleteProduct";
+import { DeleteProductDemo } from "./_components/DeleteProduct";
+import DialogModalEditProduct from "./_components/DialogModalEditProduct";
 const menuPage = async () => {
-  // const [filteredMenu, setFilteredMenu] = useState(menuData);
-  // const [showAdd, setShowAdd] = useState(false);
-  // const [editingId, setEditingId] = useState(null); // track editing item
-  // const [newMenu, setNewMenu] = useState({
-  //   id: null,
-  //   image: "",
-  //   product: "",
-  //   category: "",
-  //   price: 0,
-  //   description: "",
-  //   quantity: 0,
-  //   availability: "Available",
-  // });
-
-  // // 🔎 search filter
-  // const handleFilterChange = ({ search }) => {
-  //   let result = [...menuData];
-  //   if (search) {
-  //     result = result.filter(
-  //       (o) =>
-  //         o.product.toLowerCase().includes(search.toLowerCase()) ||
-  //         o.category.toLowerCase().includes(search.toLowerCase()) ||
-  //         o.price == search ||
-  //         o.quantity == search
-  //     );
-  //     setFilteredMenu(result);
-  //   } else {
-  //     setFilteredMenu(menuData);
-  //   }
-  // };
-
-  // // ➕ Add or Update item
-  // const handleConfirm = () => {
-  //   if (!newMenu.product || !newMenu.category) {
-  //     alert("Please fill all required fields");
-  //     return;
-  //   }
-
-  //   if (editingId) {
-  //     // update existing
-  //     const updatedMenu = filteredMenu.map((item) =>
-  //       item.id === editingId ? { ...newMenu, id: editingId } : item
-  //     );
-  //     setFilteredMenu(updatedMenu);
-  //   } else {
-  //     // add new
-  //     const newItem = { ...newMenu, id: Date.now() };
-  //     setFilteredMenu([...filteredMenu, newItem]);
-  //   }
-
-  //   // reset
-  //   setNewMenu({
-  //     id: null,
-  //     image: "",
-  //     product: "",
-  //     category: "",
-  //     price: 0,
-  //     description: "",
-  //     quantity: 0,
-  //     availability: "Available",
-  //   });
-  //   setEditingId(null);
-  //   setShowAdd(false);
-  // };
-  // // ❌ Remove item
-  // const handleRemove = (id) => {
-  //   const updatedMenu = filteredMenu.filter((item) => item.id !== id);
-  //   setFilteredMenu(updatedMenu);
-  // };
-
-  // // 🖊 Edit item
-  // const handleEdit = (item) => {
-  //   setNewMenu(item);
-  //   setEditingId(item.id);
-  //   setShowAdd(true);
-  // };
-
-  // // ❌ clear all items
-  // const handleClearMenu = () => {
-  //   setFilteredMenu([]);
-  // };
 
   const allProducts: ProductsResponse = await getAllProducts();
   const allCategories: TCategoryResponse = await getAllCategories();
+  const singleProduct: SingleProductResponse = await getSingleProduct("68d4f1b539ef30befd2e36ef")
 
   return (
     <>
@@ -183,18 +102,21 @@ const menuPage = async () => {
                         </td>
                         {/* Actions */}
                         <td className="p-3 text-sm text-gray-700 flex items-center justify-end gap-3">
-                          <DeleteProduct id={item._id}>
+                          <DeleteProductDemo id={item._id}>
                             <Button
                               className="text-[#E63746] bg-[#FEE2E2] hover:bg-[#FDCACA] p-2 rounded-lg cursor-pointer transition"
                             >
                               <Trash2 size={16} />
                             </Button>
-                          </DeleteProduct>
-                          <Button
-                            className="text-[#447A9C] bg-[#E1F0F6] hover:bg-[#B3D8E9] p-2 rounded-lg cursor-pointer transition"
-                          >
-                            <PenLine size={16} />
-                          </Button>
+                          </DeleteProductDemo>
+
+                          <DialogModalEditProduct id={item._id} categories={allCategories.categories} product={singleProduct}>
+                            <Button
+                              className="text-[#447A9C] bg-[#E1F0F6] hover:bg-[#B3D8E9] p-2 rounded-lg cursor-pointer transition"
+                            >
+                              <PenLine size={16} />
+                            </Button>
+                          </DialogModalEditProduct>
                         </td>
                       </tr>
                     ))}

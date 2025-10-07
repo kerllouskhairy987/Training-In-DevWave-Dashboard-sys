@@ -6,7 +6,14 @@ import { revalidatePath } from "next/cache";
 // ------------------------Get All Products------------
 export const getAllProducts = async () => {
     const res = await fetch(`${process.env.BASE_URL_DBS}/api/food/list`);
+    console.log(res)
     return res.json();
+}
+
+// --------------------------------Get Single Product-----------
+export const getSingleProduct = async (id: string) => {
+    const res = await fetch(`${process.env.BASE_URL_DBS}/api/food/single/${id}`)
+    return res.json()
 }
 
 // ------------------------------- Get all categories ----------
