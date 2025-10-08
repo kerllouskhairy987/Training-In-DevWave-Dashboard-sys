@@ -14,7 +14,7 @@ const menuPage = async () => {
 
   const allProducts: ProductsResponse = await getAllProducts();
   const allCategories: TCategoryResponse = await getAllCategories();
-  const singleProduct: SingleProductResponse = await getSingleProduct("68d4f1b539ef30befd2e36ef")
+  // const singleProduct: SingleProductResponse = await getSingleProduct("68d4f1b539ef30befd2e36ef")
 
   return (
     <>
@@ -110,7 +110,7 @@ const menuPage = async () => {
                             </Button>
                           </DeleteProductDemo>
 
-                          <DialogModalEditProduct id={item._id} categories={allCategories.categories} product={singleProduct}>
+                          <DialogModalEditProduct id={item._id} categories={allCategories.categories}>
                             <Button
                               className="text-[#447A9C] bg-[#E1F0F6] hover:bg-[#B3D8E9] p-2 rounded-lg cursor-pointer transition"
                             >

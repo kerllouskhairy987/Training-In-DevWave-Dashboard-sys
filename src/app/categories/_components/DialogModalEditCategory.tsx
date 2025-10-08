@@ -14,11 +14,12 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useActionState, useEffect, useState } from "react";
-import { addCategory } from "../_actions/category";
+import { updateSingleCategory } from "../_actions/category";
 import { SuccessMes } from "@/messages/SuccessMes";
 import { ErrorMes } from "@/messages/ErrorMes";
 
 type TProps = {
+    id: string
     children: React.ReactNode;
 }
 type InitialState = {
@@ -38,10 +39,13 @@ const initialState: InitialState = {
     values: null
 }
 
-export function DialogModalAdd({ children }: TProps) {
+export function DialogModalEditCategory({ children, id }: TProps) {
     const [open, setOpen] = useState(false)
 
-    const [state, action, pending] = useActionState(addCategory.bind(null, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkOTgyYTAyZTdlYTVlYTE2MjJiZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1OTk1OTQ1N30.XWrU8c0-ZQdhKPV6cHg6rgjWZAlrPW0nSQh8G39cWI8"), initialState)
+    const [state, action, pending] = useActionState(updateSingleCategory.bind(null, {
+        id,
+        token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkOTgyYTAyZTdlYTVlYTE2MjJiZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1OTk1OTQ1N30.XWrU8c0-ZQdhKPV6cHg6rgjWZAlrPW0nSQh8G39cWI8"
+    }), initialState)
 
     useEffect(() => {
         if ((state.status === 200 || state.status === 201) && state.message && !pending) {

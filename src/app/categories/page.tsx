@@ -3,27 +3,15 @@ import { useState } from "react";
 import { categories } from "@/data/data";
 import DashboardHeader from "@/components/dashboardHeader";
 import { PenLine, Trash, X } from "lucide-react";
-import { deleteCategory, getAllCategories } from "./_actions/category";
-import { TCategoryDeleteResponse, TCategoryResponse } from "./_types";
+import { getAllCategories } from "./_actions/category";
+import { TCategoryResponse } from "./_types";
 import Image from "next/image";
-import { DialogModalEdit } from "./_components/DialogModalEdit";
 import { Button } from "@/components/ui/button";
 import { AlertDialogDelete } from "@/components/AlertDialog";
 import { DialogModalAdd } from "./_components/DialogModalAdd";
-import { ErrorMes } from "@/messages/ErrorMes";
-import { SuccessMes } from "@/messages/SuccessMes";
+import { DialogModalEditCategory } from "./_components/DialogModalEditCategory";
 const CategoriesPage = async () => {
   const allCategories: TCategoryResponse = await getAllCategories();
-
-  const handleDeleteCategory = async (id: string) => {
-    const deleteCategoryRes: TCategoryDeleteResponse =
-      await deleteCategory(id, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDQ0MjNlYmM5MDA2YmZkN2QyZDc5YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5Nzc1MzMyfQ.3gHSdcAvIx_KavDUruobeAE0REl6S0nv8rBlF_mMYR0");
-    if (deleteCategoryRes.success === false) {
-      ErrorMes({ message: deleteCategoryRes.message })
-      return;
-    }
-    SuccessMes({ message: deleteCategoryRes.message })
-  }
 
   return (
 
@@ -79,7 +67,7 @@ const CategoriesPage = async () => {
                   </td>
                   <td className="p-3 text-sm gap-1">
                     <div className="flex items-center justify-end gap-1">
-                      <DialogModalEdit id={category._id}>
+                      <DialogModalEditCategory id={category._id}>
                         <Button
                           className="text-success bg-accent-foreground/40 px-3 py-3 rounded-sm text-sm hover:bg-accent flex items-center gap-1"
                           variant={"outline"}
@@ -87,7 +75,7 @@ const CategoriesPage = async () => {
                         >
                           <PenLine size={16} />
                         </Button>
-                      </DialogModalEdit>
+                      </DialogModalEditCategory>
 
                       <AlertDialogDelete id={category._id}>
                         <Button

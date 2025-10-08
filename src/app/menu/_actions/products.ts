@@ -1,12 +1,11 @@
 "use server";
 
-import { addProductSchema } from "@/validations/product";
+import { addProductSchema, updateProductSchema } from "@/validations/product";
 import { revalidatePath } from "next/cache";
 
 // ------------------------Get All Products------------
 export const getAllProducts = async () => {
     const res = await fetch(`${process.env.BASE_URL_DBS}/api/food/list`);
-    console.log(res)
     return res.json();
 }
 
@@ -47,7 +46,7 @@ export const addProduct = async (token: string, prevState: unknown, formData: Fo
             body: formData
         });
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
 
         if (!res.ok) {
             return {
@@ -80,6 +79,75 @@ export const addProduct = async (token: string, prevState: unknown, formData: Fo
     }
 }
 
+// ---------------------------Update Product----------------
+export const updateProduct = async (args: { token: string, id: string }, prevState: unknown, formData: FormData) => {
+    // Validations
+    const result = updateProductSchema().safeParse(
+        Object.fromEntries(formData.entries())
+    );
+
+    if (result.success === false) {
+        return {
+            status: 400,
+            error: result.error.flatten().fieldErrors,
+        }
+    }
+
+    try {
+        // 🧩 إنشاء FormData جديدة
+        const newFormData = new FormData();
+
+        // 🧠 نلف على كل المفاتيح ونتأكد هل الصورة فيها ملف ولا لأ
+        for (const [key, value] of formData.entries()) {
+            if (key === "image") {
+                const file = value as File;
+
+                // ✅ لو المستخدم فعلاً رفع صورة جديدة
+                if (file && file.size > 0) {
+                    newFormData.append("image", file);
+                }
+                // ❌ غير كده متضيفش الصورة أصلاً
+            } else {
+                newFormData.append(key, value);
+            }
+        }
+
+
+        const res = await fetch(`${process.env.BASE_URL_DBS}/api/food/update/${args.id}`, {
+            method: "PUT",
+            headers: {
+                "token": args.token
+            },
+            body: newFormData
+        });
+        const data = await res.json()
+        console.log('res - json', data)
+
+        if (!res.ok) {
+            return {
+                status: 404,
+                message: data.error as string
+            }
+        }
+
+        // revalidate Path
+        revalidatePath("/menu");
+        revalidatePath("/");
+
+        return {
+            status: 200,
+            message: data.message as string
+        }
+
+    } catch (error) {
+        console.log(error)
+        return {
+            status: 500,
+            message: "Internal Server Error"
+        }
+    }
+}
+
 //-------------------------------Delete Product----------------
 export const deleteProduct = async (id: string, token: string) => {
     const res = await fetch(`${process.env.BASE_URL_DBS}/api/food/remove/${id}`, {
@@ -90,7 +158,7 @@ export const deleteProduct = async (id: string, token: string) => {
     });
     revalidatePath("/menu");
     revalidatePath("/");
-    console.log(res)
+    // console.log(res)
 
     return res.json();
 }

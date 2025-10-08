@@ -1,0 +1,10 @@
+category  {
+    get single category 
+    update category
+}
+
+order {
+    get all orders
+    format date with new Date(my iso data).toLocaleString()
+    handle complete payment or not
+}

@@ -23,7 +23,6 @@ type TProps = {
 }
 
 export function DeleteProductDemo({ children, id }: TProps) {
-    console.log('id ----------', id)
 
     const handleDeleteProduct = async (id: string) => {
         const deleteProductRes: TCategoryDeleteResponse =

@@ -26,10 +26,9 @@ export function AlertDialogDelete({ children, id }: TProps) {
 
     const handleDeleteCategory = async (id: string) => {
         const deleteCategoryRes: TCategoryDeleteResponse =
-            await deleteCategory(id, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZDQ0MjNlYmM5MDA2YmZkN2QyZDc5YSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNzU5Nzc1MzMyfQ.3gHSdcAvIx_KavDUruobeAE0REl6S0nv8rBlF_mMYR0");
+            await deleteCategory(id, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTZkOTgyYTAyZTdlYTVlYTE2MjJiZSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1OTk1OTQ1N30.XWrU8c0-ZQdhKPV6cHg6rgjWZAlrPW0nSQh8G39cWI8");
         if (deleteCategoryRes.success === false) {
             ErrorMes({ message: deleteCategoryRes.message })
-            return;
         }
         SuccessMes({ message: deleteCategoryRes.message })
     }

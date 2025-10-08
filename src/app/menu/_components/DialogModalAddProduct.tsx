@@ -48,6 +48,7 @@ const initialState: InitialState = {
 
 const DialogModalAddProduct = ({ children, categories }: TProps) => {
     const [getSelectedCategory, setGetSelectedCategory] = useState(categories[0].name);
+    const [open, setOpen] = useState(false);
     console.log("first", getSelectedCategory)
 
     const [state, action, pending] = useActionState(addProduct.bind(null, "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4ZTQxOTJhNmIxMzk1OWY4OGUwMWFhMCIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTc1OTc3OTExNX0.0VlxD5w_k9vRwzFOMx1BSm6Eu0qwAH-yf2lnJcUETPQ"), initialState);
@@ -56,15 +57,16 @@ const DialogModalAddProduct = ({ children, categories }: TProps) => {
     useEffect(() => {
         if ((state.status === 200 || state.status === 201) && state.message && !pending) {
             SuccessMes({ message: state.message })
+            setOpen(false)
         }
         if ((state.status === 400 || state.status === 500 || state.status === 401 || state.status === 404 || state.status === 403) && state.message && !pending) {
             ErrorMes({ message: state.message })
         }
-    }, [state.status])
+    }, [state.status, state.message, pending])
 
 
     return (
-        <Dialog>
+        <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild onClick={() => console.log("id")}>
                 {children}
             </DialogTrigger>
@@ -171,7 +173,7 @@ const DialogModalAddProduct = ({ children, categories }: TProps) => {
                         {
                             pending
                                 ? <Button type="button" disabled >loading...</Button>
-                                : <Button type="submit" >Add Category</Button>
+                                : <Button type="submit" >Add Product</Button>
                         }
                     </DialogFooter>
                 </form>

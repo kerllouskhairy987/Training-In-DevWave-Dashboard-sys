@@ -9,6 +9,33 @@ export const getAllCategories = async () => {
     return res.json();
 };
 
+//--------------------------------Update Single Category----------
+export const updateSingleCategory = async (args: {id: string, token: string}, prevState: unknown, formData: FormData) => {
+
+    // Validations
+    const result = addCategorySchema().safeParse(
+        Object.fromEntries(formData.entries())
+    );
+
+    if (result.success === false) {
+        return {
+            status: 400,
+            error: result.error.flatten().fieldErrors,
+            values: Object.fromEntries(formData.entries())
+        }
+    }
+
+    const res = await fetch(`${process.env.BASE_URL_DBS}/api/category/update/${args.id}`, {
+        method: "PUT",
+        headers: {
+            "token": args.token
+        }
+    })
+    const data = await res.json()
+    console.log('datatatata', data)
+    return data;
+}
+
 // ------------------------------- Delete One Category ----------
 export const deleteCategory = async (id: string, token: string) => {
     const res = await fetch(`${process.env.BASE_URL_DBS}/api/category/delete/${id}`, {
@@ -18,13 +45,21 @@ export const deleteCategory = async (id: string, token: string) => {
         }
     });
 
-    if (res.ok) {
-        // revalidate path
-        revalidatePath("/categories");
+    const data = await res.json();
+    console.log('delete category', data)
 
-        return res.json();
-    } else {
-        return res.json();
+    if (data.success === false || !res.ok || res.status !== 200) {
+        return {
+            status: 400,
+            message: data.error as string || data.message as string,
+        }
+    }
+
+    if (res.ok) {
+        revalidatePath("/categories");
+        revalidatePath("/");
+        console.log('-------*************', data)
+        return data;
     }
 }
 
@@ -56,17 +91,20 @@ export const addCategory = async (token: string, prevState: unknown, formData: F
         const data = await res.json();
         console.log(data)
 
-        if (res.status === 400) {
+        if (data.success === false || !res.ok || res.status === 400) {
             return {
-                status: res.status,
-                message: data.error as string,
+                status: 400,
+                message: data.error as string || data.message as string,
             }
         }
 
-        revalidatePath("/categories");
-        revalidatePath("/");
+        if (res.ok) {
+            revalidatePath("/categories");
+            revalidatePath("/");
+        }
+
         return {
-            status: res.status,
+            status: 200,
             message: data.message as string,
         }
     } catch (error) {
