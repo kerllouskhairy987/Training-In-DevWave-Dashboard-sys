@@ -2,23 +2,23 @@
 import { useState } from "react";
 import { Users, ShoppingBasket, DollarSign, Dot, Crown } from "lucide-react";
 import DashboardHeader from "@/components/dashboardHeader";
-import { orders, stockAlerts } from "@/data/data";
+import { orders, stockAlerts,stats } from "@/data/data";
 
-const stats = [
-  {
-    id: 1,
-    text: "Earned this month",
-    number: "$3,888",
-    icon: <DollarSign size={24} />,
-  },
-  { id: 2, text: "New Clients", number: "312", icon: <Users size={24} /> },
-  {
-    id: 3,
-    text: "Total Orders Made",
-    number: "1170",
-    icon: <ShoppingBasket size={24} />,
-  },
-];
+// const stats = [
+//   {
+//     id: 1,
+//     text: "Earned this month",
+//     number: "$3,888",
+//     icon: <DollarSign size={24} />,
+//   },
+//   { id: 2, text: "New Clients", number: "312", icon: <Users size={24} /> },
+//   {
+//     id: 3,
+//     text: "Total Orders Made",
+//     number: "1170",
+//     icon: <ShoppingBasket size={24} />,
+//   },
+// ];
 
 const DashboardPage = () => {
   const [filteredOrders, setFilteredOrders] = useState(orders);
