@@ -1,3 +1,5 @@
+import { Users, ShoppingBasket, DollarSign } from "lucide-react";
+
 export const orders = [
   {
     id: 1,
@@ -52,6 +54,22 @@ export const orders = [
     date: "2025-09-29",
     status: "pending",
     confirmation: false,
+  },
+];
+export 
+const stats = [
+  {
+    id: 1,
+    text: "Earned this month",
+    number: "$3,888",
+    icon: <DollarSign size={24} />,
+  },
+  { id: 2, text: "New Clients", number: "312", icon: <Users size={24} /> },
+  {
+    id: 3,
+    text: "Total Orders Made",
+    number: "1170",
+    icon: <ShoppingBasket size={24} />,
   },
 ];
 export const stockAlerts = [
@@ -200,5 +218,201 @@ export const menuData = [
     availability: "Out of Stock",
   },
 ];
+export const customers = [
+  {
+    id: 1,
+    name: "Bessie Cooper",
+    email: "bessie@gmail.com",
+    phone: "+20 1067909909",
+    ordersMade: 152,
+    loyaltyPoints: 2400,
+  },
+  {
+    id: 2,
+    name: "Darrell Steward",
+    email: "darrell@gmail.com",
+    phone: "+20 1067909909",
+    ordersMade: 20,
+    loyaltyPoints: 976,
+  },
+  {
+    id: 3,
+    name: "Cody Fisher",
+    email: "cody@gmail.com",
+    phone: "+20 1098765432",
+    ordersMade: 45,
+    loyaltyPoints: 1200,
+  },
+  {
+    id: 4,
+    name: "Eleanor Pena",
+    email: "eleanor@gmail.com",
+    phone: "+20 1023456789",
+    ordersMade: 89,
+    loyaltyPoints: 1980,
+  },
+  {
+    id: 5,
+    name: "Marvin McKinney",
+    email: "marvin@gmail.com",
+    phone: "+20 1066543210",
+    ordersMade: 10,
+    loyaltyPoints: 450,
+  },
+  {
+    id: 6,
+    name: "Courtney Henry",
+    email: "courtney@gmail.com",
+    phone: "+20 1099088776",
+    ordersMade: 64,
+    loyaltyPoints: 1550,
+  },
+  {
+    id: 7,
+    name: "Jerome Bell",
+    email: "jerome@gmail.com",
+    phone: "+20 1076543210",
+    ordersMade: 130,
+    loyaltyPoints: 2200,
+  },
+  {
+    id: 8,
+    name: "Theresa Webb",
+    email: "theresa@gmail.com",
+    phone: "+20 1087654321",
+    ordersMade: 34,
+    loyaltyPoints: 980,
+  },
+  {
+    id: 9,
+    name: "Leslie Alexander",
+    email: "leslie@gmail.com",
+    phone: "+20 1056784321",
+    ordersMade: 78,
+    loyaltyPoints: 1620,
+  },
+  {
+    id: 10,
+    name: "Guy Hawkins",
+    email: "guy@gmail.com",
+    phone: "+20 1043219876",
+    ordersMade: 5,
+    loyaltyPoints: 200,
+  },
+];
+export const staffMembers = [
+  {
+    id: 1,
+    name: "Ahmed Hassan",
+    email: "ahmed.hassan@restaurant.com",
+    phone: "+20 1067909909",
+    role: "Head Chef",
+    salary: "$3200",
+  },
+  {
+    id: 2,
+    name: "Sara Mohamed",
+    email: "sara.mohamed@restaurant.com",
+    phone: "+20 1012345678",
+    role: "Sous Chef",
+    salary: "$2400",
+  },
+  {
+    id: 3,
+    name: "Omar Ali",
+    email: "omar.ali@restaurant.com",
+    phone: "+20 1098765432",
+    role: "Waiter",
+    salary: "$900",
+  },
+  {
+    id: 4,
+    name: "Mona Adel",
+    email: "mona.adel@restaurant.com",
+    phone: "+20 1076543210",
+    role: "Waitress",
+    salary: "$950",
+  },
+  {
+    id: 5,
+    name: "Hassan Tarek",
+    email: "hassan.tarek@restaurant.com",
+    phone: "+20 1056784321",
+    role: "Restaurant Manager",
+    salary: "$4000",
+  },
+  {
+    id: 6,
+    name: "Layla Nasser",
+    email: "layla.nasser@restaurant.com",
+    phone: "+20 1087654321",
+    role: "Cashier",
+    salary: "$1200",
+  },
+  {
+    id: 7,
+    name: "Karim Mostafa",
+    email: "karim.mostafa@restaurant.com",
+    phone: "+20 1043219876",
+    role: "Barista",
+    salary: "$1000",
+  },
+  {
+    id: 8,
+    name: "Nour El-Din",
+    email: "nour.eldin@restaurant.com",
+    phone: "+20 1023456789",
+    role: "Cleaner",
+    salary: "$700",
+  },
+  {
+    id: 9,
+    name: "Fatma Youssef",
+    email: "fatma.youssef@restaurant.com",
+    phone: "+20 1009998888",
+    role: "Hostess",
+    salary: "$1100",
+  },
+  {
+    id: 10,
+    name: "Tamer Khaled",
+    email: "tamer.khaled@restaurant.com",
+    phone: "+20 1012223333",
+    role: "Delivery Driver",
+    salary: "$1300",
+  },
+];
 
+export const salesData = [
+  {
+    id: 1,
+    title: "Sales Charts (Weekly)",
+    timeline: [
+      { week: "Week 1", value: 78 },
+      { week: "Week 2", value: 60 },
+      { week: "Week 3", value: 62 },
+      { week: "Week 4", value: 80 },
+    ],
+  },
+  {
+    id: 2,
+    title: "Sales Charts (Monthly)",
+    timeline: [
+      { week: "Jan", value: 230 },
+      { week: "Feb", value: 180 },
+      { week: "Mar", value: 210 },
+      { week: "Apr", value: 260 },
+    ],
+  },
+  {
+    id: 3,
+    title: "Sales Charts (Quarterly)",
+    timeline: [
+      { week: "Q1", value: 650 },
+      { week: "Q2", value: 720 },
+      { week: "Q3", value: 680 },
+      { week: "Q4", value: 800 },
+    ],
+  },
+];
 

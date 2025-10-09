@@ -157,5 +157,37 @@
 }
 @layer components{
 
+/* Custom Swiper Navigation */
+.sales-swiper .swiper-button-next,
+.sales-swiper .swiper-button-prev {
+  color: #2563eb !important; /* Tailwind blue-600 */
+  font-weight: bold;
+  top: 50% !important;
+  transform: translateY(-50%);
+  width: 25px !important;
+  height: 25px !important;
+  transition: all 0.2s ease-in-out;
+  background: transparent !important;
+  opacity: 0.9;
+}
+
+/* Increase arrow size a bit */
+.sales-swiper .swiper-button-next::after,
+.sales-swiper .swiper-button-prev::after {
+  font-size: 28px !important;
+}
+
+/* Hover effect */
+.sales-swiper .swiper-button-next:hover,
+.sales-swiper .swiper-button-prev:hover {
+  color: #1d4ed8 !important; /* Darker blue */
+  opacity: 1;
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Remove default blur/shadow */
+.sales-swiper .swiper-button-disabled {
+  opacity: 0.3 !important;
+}
 
 }

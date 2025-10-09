@@ -50,12 +50,12 @@ const sidebarLinks: SidebarLink[] = [
     path: "/categories",
     icon: <ListCollapse size={24} />,
   },
-  {
-    id: 5,
-    title: "Inventory",
-    path: "/inventory",
-    icon: <FileCheck2 size={24} />,
-  },
+  // {
+  //   id: 5,
+  //   title: "Inventory",
+  //   path: "/inventory",
+  //   icon: <FileCheck2 size={24} />,
+  // },
   {
     id: 6,
     title: "Customers",
@@ -74,12 +74,12 @@ const sidebarLinks: SidebarLink[] = [
     path: "/analytics",
     icon: <ChartNoAxesColumnDecreasing size={24} />,
   },
-  {
-    id: 9,
-    title: "Settings",
-    path: "/settings",
-    icon: <Settings size={24} />,
-  },
+  // {
+  //   id: 9,
+  //   title: "Settings",
+  //   path: "/settings",
+  //   icon: <Settings size={24} />,
+  // },
 ];
 
 const AppSidebar: React.FC = () => {
