@@ -8,3 +8,15 @@ order {
     format date with new Date(my iso data).toLocaleString()
     handle complete payment or not
 }
+
+✅ login
+✅ register
+✅ CRUD --> Product
+✅ CR[U]D --> category
+
+
+loading {
+    update category
+
+    get user info to put them in navbar 
+}

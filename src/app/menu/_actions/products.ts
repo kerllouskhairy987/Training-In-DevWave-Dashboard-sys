@@ -68,13 +68,13 @@ export const addProduct = async (token: string, prevState: unknown, formData: Fo
         revalidatePath("/");
         return {
             status: res.status,
-            message: data.message
+            message: data.message,
         }
     } catch (error) {
         console.log(error);
         return {
             status: 500,
-            message: "Internal Server Error"
+            message: "Internal Server Error",
         }
     }
 }
@@ -121,7 +121,6 @@ export const updateProduct = async (args: { token: string, id: string }, prevSta
             body: newFormData
         });
         const data = await res.json()
-        console.log('res - json', data)
 
         if (!res.ok) {
             return {

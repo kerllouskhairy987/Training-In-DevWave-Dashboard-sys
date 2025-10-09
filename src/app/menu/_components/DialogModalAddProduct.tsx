@@ -16,9 +16,9 @@ import { Label } from "@/components/ui/label"
 import { useActionState, useEffect, useState } from "react";
 import { addProduct } from "../_actions/products";
 import { TCategory } from "@/app/categories/_types";
-import { SelectCategory } from "./SelectCategory";
 import { SuccessMes } from "@/messages/SuccessMes";
 import { ErrorMes } from "@/messages/ErrorMes";
+import { DropdownSelect } from "@/components/DropdownSelect";
 
 type TProps = {
     children: React.ReactNode;
@@ -148,7 +148,7 @@ const DialogModalAddProduct = ({ children, categories }: TProps) => {
                         <div>
                             <div className="grid gap-3">
                                 <Label htmlFor="category">Category</Label>
-                                <SelectCategory selectors={categories} setGetSelectedCategory={setGetSelectedCategory} />
+                                <DropdownSelect selectors={categories} setSelector={setGetSelectedCategory} />
                                 <Input
                                     id="category"
                                     name="category"

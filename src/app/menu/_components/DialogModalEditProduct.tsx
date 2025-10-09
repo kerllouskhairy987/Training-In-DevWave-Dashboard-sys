@@ -16,7 +16,7 @@ import { Label } from "@/components/ui/label"
 import { use, useActionState, useEffect, useState } from "react";
 import { addProduct, getSingleProduct, updateProduct } from "../_actions/products";
 import { TCategory } from "@/app/categories/_types";
-import { SelectCategory } from "./SelectCategory";
+import { DropdownSelect } from "../../../components/DropdownSelect";
 import { SuccessMes } from "@/messages/SuccessMes";
 import { ErrorMes } from "@/messages/ErrorMes";
 import { Product, SingleProductResponse } from "../types";
@@ -182,7 +182,7 @@ const DialogModalEditProduct = ({ id, children, categories }: TProps) => {
                             <div>
                                 <div className="grid gap-3">
                                     <Label htmlFor="category">Category</Label>
-                                    <SelectCategory selectors={categories} setGetSelectedCategory={setGetSelectedCategory} />
+                                    <DropdownSelect selectors={categories} setSelector={setGetSelectedCategory} />
                                     <Input
                                         id="category"
                                         name="category"
@@ -197,7 +197,6 @@ const DialogModalEditProduct = ({ id, children, categories }: TProps) => {
                                     <p className="text-red-500 text-sm">{state.error["category"]}</p>
                                 }
                             </div>
-
 
                         </div>
                         <DialogFooter className="mt-4">

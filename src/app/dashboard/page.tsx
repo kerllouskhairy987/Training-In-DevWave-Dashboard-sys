@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Users, ShoppingBasket, DollarSign, Dot, Crown } from "lucide-react";
 import DashboardHeader from "@/components/dashboardHeader";
@@ -25,37 +26,7 @@ const DashboardPage = () => {
   const handleRefill=()=>{
     alert("Refill action triggered!");
   } 
-  const handleFilterChange = ({ search, startDate, endDate, status }) => {
-    let result = [...orders];
-
-    // Search
-    if (search) {
-      result = result.filter(
-        (o) =>
-          o.customer.toLowerCase().includes(search.toLowerCase()) ||
-          o.product.toLowerCase().includes(search.toLowerCase()) ||
-          o.orderNumber.toLowerCase().includes(search.toLowerCase())
-      );
-    }
-
-    // Date filter
-    if (startDate || endDate) {
-      result = result.filter((o) => {
-        const orderDate = new Date(o.date);
-        const start = startDate ? new Date(startDate) : null;
-        const end = endDate ? new Date(endDate) : null;
-
-        return (!start || orderDate >= start) && (!end || orderDate <= end);
-      });
-    }
-
-    // Status filter
-    if (status !== "all") {
-      result = result.filter((o) => o.status === status);
-    }
-    setFilteredOrders(result);
-  };
-
+  
   return (
     <main className="w-full  mx-auto p-4 space-y-6">
       {/* Stats */}
@@ -82,7 +53,6 @@ const DashboardPage = () => {
         <div className="lg:col-span-2 bg-white rounded-lg shadow-sm ">
           <DashboardHeader
             title="Recent Orders"
-            onFilterChange={handleFilterChange}
           />
 
           <div className="overflow-x-auto my-scroll-container pb-5">
